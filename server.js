@@ -1,8 +1,7 @@
 import { bugService } from "./services/bug.service.js"
 import { loggerService } from "./services/logger.service.js" 
 import { pdfService } from "./services/pdf.service.js"
-import fs from 'fs'
-import path from 'path'
+
 import express from 'express'
 import cookieParser from 'cookie-parser'
 
@@ -13,25 +12,6 @@ const PORT = 3000
 app.use(express.static("public"))
 app.use(cookieParser())
 
-// app.get('/api/bug/download-pdf', (req, res) => {
-//     bugService.query()
-//         .then(bugs => {
-//             const filePath = pdfService.buildAnimalsPDF(bugs)
-//             res.download(filePath, 'SaveTheBugs.pdf', (err) => {
-//                 if (err) {
-//                     loggerService.error('Error downloading the PDF:', err)
-//                     res.status(500).send('Could not download the PDF')
-//                 } else {
-//                     fs.linkSync(filePath)
-//                 }
-//             })
-//         })
-//         .catch(err => {
-//             loggerService.error('Cannot get bugs for PDF', err)
-//             res.status(500).send('Cannot get bugs for PDF')
-//         })
-// })
-
 app.get('/api/bug', (req, res) => {
     // console.log('hi from get api')
     const filterBy = {
@@ -39,14 +19,15 @@ app.get('/api/bug', (req, res) => {
         severity: +req.query.severity || 0,
         description: req.query.description || '',
         _id: req.query._id || '',
+        labels: req.query.labels || '',
     }
 
-    // const sortBy = {
-    //     type: req.query.type || '',
-    //     dir: +req.query.dir || 1
-    // }
+    const sortBy = {
+        type: req.query.type || '',
+        dir: +req.query.dir || 1
+    }
     
-    bugService.query(filterBy)
+    bugService.query(filterBy,sortBy)
     .then(bugs => {
         pdfService.buildBugPDF(bugs)
         res.send(bugs)
@@ -65,7 +46,8 @@ app.get('/api/bug/save', (req, res) => {
         title: req.query.title || '', 
         //* i can do it also with a libry of num
         severity: +req.query.severity || 0, 
-        description: req.query.description || ''
+        description: req.query.description || '',
+        labels: req.query.labels || '',
     }
 
     bugService.save(bugToSave)

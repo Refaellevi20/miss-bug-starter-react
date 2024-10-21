@@ -1,50 +1,46 @@
 [
     {
+        "_id": "faWBB",
+        "title": "ggggjykyukuyyyyyyyyyyy",
+        "severity": 7,
+        "description": "",
+        "labels": ""
+    },
+    {
+        "_id": "54Qfy",
+        "title": "",
+        "severity": 0,
+        "description": ""
+    },
+    {
+        "_id": "RRN33",
+        "title": "null",
+        "severity": 0,
+        "description": ""
+    },
+    {
+        "_id": "MvcHD",
+        "title": "null",
+        "severity": 0,
+        "description": ""
+    },
+    {
         "_id": "GW1OC",
         "title": "dgf",
         "severity": 0,
-        "description": ""
+        "description": "",
+        "labels": [
+            "urgent"
+        ]
     },
     {
         "_id": "JIzg1",
         "title": "fg",
         "severity": 0,
-        "description": ""
-    },
-    {
-        "_id": "7n8TE",
-        "title": "fgd",
-        "severity": 4,
         "description": "",
-        "createdAt": 1729517723489
-    },
-    {
-        "_id": "N1bBK",
-        "createdAt": 1729517668896
-    },
-    {
-        "_id": "NR9XP",
-        "title": "rr",
-        "severity": 0,
-        "createdAt": 1729517536675
-    },
-    {
-        "_id": "dapZN",
-        "title": "t",
-        "severity": 0,
-        "createdAt": 1729517446571
-    },
-    {
-        "_id": "e0gI3",
-        "title": "",
-        "severity": 0,
-        "createdAt": 1729517439984
-    },
-    {
-        "_id": "4nupI",
-        "title": "",
-        "severity": 0,
-        "createdAt": 1729517382846
+        "labels": [
+            "bug"
+        ]
     },
     {
         "_id": "tBNAT",
@@ -53,21 +49,56 @@
         "createdAt": 1729517374655
     },
     {
-        "_id": "EyQdv"
+        "_id": "4nupI",
+        "title": "",
+        "severity": 0,
+        "createdAt": 1729517382846
+    },
+    {
+        "_id": "e0gI3",
+        "title": "",
+        "severity": 0,
+        "createdAt": 1729517439984
+    },
+    {
+        "_id": "dapZN",
+        "title": "t",
+        "severity": 0,
+        "createdAt": 1729517446571
+    },
+    {
+        "_id": "NR9XP",
+        "title": "rr",
+        "severity": 0,
+        "description": ""
+    },
+    {
+        "title": "sad",
+        "description": "afd",
+        "severity": 2,
+        "_id": "qHNjb",
+        "createdAt": 1710880421489,
+        "labels": [
+            "low",
+            "enhancement"
+        ]
+    },
+    {
+        "title": "yrer",
+        "severity": 2,
+        "description": "yd",
+        "_id": "zzVuf",
+        "createdAt": 1710880476383
     },
     {
         "title": "as",
         "severity": 3,
         "description": "as3d",
         "_id": "Hta6m",
-        "createdAt": 1710860232195
-    },
-    {
-        "title": "asdddddddd",
-        "description": "asadd",
-        "severity": 5,
-        "_id": "JXB7H",
-        "createdAt": 1710873400487
+        "createdAt": 1710860232195,
+        "labels": [
+            "feature"
+        ]
     },
     {
         "title": "szddddf",
@@ -81,20 +112,68 @@
         "severity": 3,
         "description": "asdf",
         "_id": "G8Aob",
-        "createdAt": 1710880357537
+        "createdAt": 1710880357537,
+        "labels": [
+            "backend"
+        ]
     },
     {
-        "title": "sad",
-        "description": "afd",
-        "severity": 2,
-        "_id": "qHNjb",
-        "createdAt": 1710880421489
+        "_id": "HKYOO",
+        "title": "dfedr",
+        "severity": 3,
+        "description": ""
     },
     {
-        "title": "yrer",
-        "severity": 2,
-        "description": "yd",
-        "_id": "zzVuf",
-        "createdAt": 1710880476383
+        "_id": "7n8TE",
+        "title": "fgd",
+        "severity": 4,
+        "description": "",
+        "createdAt": 1729517723489,
+        "labels": [
+            "high",
+            "issue"
+        ]
+    },
+    {
+        "_id": "qR1bW",
+        "title": "ccccccccc",
+        "severity": 4,
+        "description": ""
+    },
+    {
+        "title": "asdddddddd",
+        "description": "asadd",
+        "severity": 5,
+        "_id": "JXB7H",
+        "createdAt": 1710873400487,
+        "labels": [
+            "critical",
+            "ui"
+        ]
+    },
+    {
+        "_id": "2JHbY",
+        "title": "hgggggggg",
+        "severity": 5,
+        "description": ""
+    },
+    {
+        "_id": "vnJM5",
+        "title": "dvv",
+        "severity": 543,
+        "description": ""
+    },
+    {
+        "_id": "N1bBK",
+        "createdAt": 1729517668896,
+        "labels": [
+            "minor"
+        ]
+    },
+    {
+        "_id": "EyQdv",
+        "labels": [
+            "needs review"
+        ]
     }
 ]

@@ -14,18 +14,33 @@ export const bugService = {
 const bugs = utilService.readJsonFile('data/bug.json')
 
 
-function query(filterBy = { txt: '', severity: 0, minSeverity: 0, maxSeverity: Infinity }) {
-    let bugsToReturn = bugs;
+function query(filterBy = { txt: '', severity: 0, labels: [] }, sortBy = { type: '', description: '' }) {
+    let bugsToReturn = bugs
+
+    // if (!Array.isArray(filterBy.labels)) {
+    //     filterBy.labels = []
+    // }
 
     if (filterBy.txt) {
-        const regex = new RegExp(filterBy.txt, 'i');
-        bugsToReturn = bugsToReturn.filter(bug => regex.test(bug.title));
+        const regex = new RegExp(filterBy.txt, 'i')
+        bugsToReturn = bugsToReturn.filter(bug => regex.test(bug.title))
     }
-    if (filterBy.minSeverity) {
-        bugsToReturn = bugsToReturn.filter(bug => bug.severity >= filterBy.minSeverity);
+    if (filterBy.severity) {
+        bugsToReturn = bugsToReturn.filter(bug => bug.severity >= filterBy.severity)
     }
-    if (filterBy.maxSeverity !== undefined) {
-        bugsToReturn = bugsToReturn.filter(bug => bug.severity <= filterBy.maxSeverity);
+    if (filterBy.description) {
+        const regex = new RegExp(filterBy.description, 'i')
+        bugsToReturn = bugsToReturn.filter(bug => regex.test(bug.description))
+    }
+    if (filterBy.labels.length > 0) {
+        const regex = new RegExp(filterBy.labels, 'i'); // Match any label
+        bugsToReturn = bugsToReturn.filter(bug => Array.isArray(bug.labels) && bug.labels.some(label => regex.test(label)))
+    }
+    //Sort
+    if (sortBy.type === 'createdAt') {
+        bugs.sort((a, b) => (+sortBy.dir) * (a.createdAt - b.createdAt))
+    } else if (sortBy.type === 'severity') {
+        bugs.sort((a, b) => (+sortBy.dir) * (a.severity - b.severity))
     }
 
     return Promise.resolve(bugsToReturn)
@@ -62,6 +77,8 @@ function save(bugToSave) {
         bugs[bugIdx] = bugToSave
     } else {
         bugToSave._id = utilService.makeId()
+        bugToSave.createdAt = Date.now()
+        bugToSave.labels = bugToSave.labels?.length ? bugToSave.labels : ['no label']
         bugs.unshift(bugToSave)
     }
 

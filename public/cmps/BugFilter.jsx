@@ -2,46 +2,77 @@ const { useState, useEffect } = React
 import { bugService } from '../services/bug.service.js' 
 
 export function BugFilter({ onSetFilter, filterBy }) {
-    const [localFilterBy, setLocalFilterBy] = useState(filterBy)
+    // const [localFilterBy, setLocalFilterBy] = useState(filterBy)
+    const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
+
+
+    // useEffect(() => {
+    //     setLocalFilterBy(filterBy)
+    // }, [filterBy])
+
+    // useEffect(() => {
+    //     onSetFilter(localFilterBy)
+    // }, [localFilterBy])
+
+    // function handleChange({ target }) {
+    //     const { value, name: field } = target
+    //     setLocalFilterBy((prevFilter) => ({
+    //         ...prevFilter,
+    //         [field]: value === '' ? undefined : value,
+    //     }))
+    // }
 
     useEffect(() => {
-        setLocalFilterBy(filterBy)
-    }, [filterBy])
+		onSetFilter(filterByToEdit)
+	}, [filterByToEdit])
 
-    useEffect(() => {
-        onSetFilter(localFilterBy)
-    }, [localFilterBy])
+	function onSubmitFilter(ev) {
+		ev.preventDefault()
+		onSetFilter(filterByToEdit)
+	}
 
     function handleChange({ target }) {
-        const { value, name: field } = target
-        setLocalFilterBy((prevFilter) => ({
-            ...prevFilter,
-            [field]: value === '' ? undefined : value,
-        }))
-    }
+		const field = target.name
+		
+		const value = target.type === 'number' ? +target.value || '' : target.value
+		setFilterByToEdit((prevFilterBy) => ({ ...prevFilterBy, [field]: value }))
+	}
 
     return (
         <section className="filter">
             <h3>Filter</h3>
-            <label>
-                <span>Text: </span>
-                <input
-                    type="text"
-                    name="txt"
-                    value={localFilterBy.txt}
-                    onChange={handleChange}
-                />
-            </label>
-            <label>
-                <span>severity: </span>
-                <input
-                    type="number"
-                    name="Severity"
-                    min="0"
-                    value={localFilterBy.Severity || ''}
-                    onChange={handleChange}
-                />
-            </label>
+            <form onSubmit={onSubmitFilter}></form>
+        	<label htmlFor="title">Title:</label>
+				<input
+					value={filterByToEdit.txt}
+					onChange={handleChange}
+					name="txt"
+					id="title"
+					type="text"
+					placeholder="By Title"
+				/>
+
+				<label htmlFor="severity">Severity:</label>
+				<input
+					value={filterByToEdit.severity}
+					onChange={handleChange}
+					name="severity"
+					id="severity"
+					type="number"
+					placeholder="By Severity"
+				/>
+
+				<label htmlFor="labels">Labels:</label>
+				<input
+					value={filterByToEdit.labels}
+					onChange={handleChange}
+					name="labels"
+					id="labels"
+					type="text"
+					placeholder="By labels"
+				/>
+
+				{/* <button>Filter Bugs</button> */}
         </section>
     )
 }
@@ -139,3 +170,13 @@ export function BugFilter({ onSetFilter, filterBy }) {
 //         </section>
 //     )
 // }
+
+{/* <label htmlFor="severity">Severity:</label>
+				<input
+					value={filterByToEdit.severity}
+					onChange={handleChange}
+					name="severity"
+					id="severity"
+					type="number"
+					placeholder="By Severity"
+				/> */}

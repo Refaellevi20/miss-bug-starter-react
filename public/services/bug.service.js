@@ -38,8 +38,8 @@ export const bugService = {
 // }
 
 //* sort later
-function query(filterBy) {
-    const queryParams = { ...filterBy, }
+function query(filterBy,sortBy) {
+    const queryParams = { ...filterBy,...sortBy }
     return axios.get(BASE_URL, { params: queryParams })
         .then(res => res.data)
         .catch(err =>  console.log('err:', err))
@@ -70,11 +70,11 @@ function save(bug) {
 }
 
 function getEmptyBug() {
-    return { title: '', description: '', severity: 0,}
+    return { title: '', description: '', severity: 0,labels: []}
 }
 
 function getDefaultFilter() {
-    return { txt: '', minSeverity: 0, severity: 0,}
+    return { txt: '', minSeverity: 0, severity: 0,labels: []}
 }
 
 

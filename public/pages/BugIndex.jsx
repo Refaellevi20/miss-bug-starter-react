@@ -2,27 +2,27 @@ import { bugService } from '../services/bug.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { BugList } from '../cmps/BugList.jsx'
 import { BugFilter } from '../cmps/BugFilter.jsx'
+import { BugSort } from '../cmps/SortBy.jsx'
 
+
+const { Link, useSearchParams } = ReactRouterDOM
 const { useState, useEffect } = React
 
 export function BugIndex() {
+    const [searchParams, setSearchParams] = useSearchParams()
     const [bugs, setBugs] = useState(null)
     const [filterBy, setFilterBy] = useState(bugService.getDefaultFilter())
-    // const [sortBy, setSortBy] = useState(bugService.getDefaultSortBy())
+    const [sortBy, setSortBy] = useState({ type: '', dir: 1 })
 
     useEffect(() => {
         loadBugs()
-    }, [filterBy])
+    }, [filterBy,sortBy])
 
     function loadBugs() {
-        return bugService.query(filterBy)
-            .then((bugs) => {
-                setBugs(bugs)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+        bugService.query(filterBy, sortBy)
+            .then((bugs) => setBugs(bugs))
     }
+
 
 
     function onRemoveBug(bugId) {
@@ -80,19 +80,22 @@ export function BugIndex() {
     function onSetFilterBy(newFilterBy) {
         setFilterBy(newFilterBy)
     }
-    // function onSetSortBy(newSortBy) {
-    //     setSortBy(prev => ({ ...prev, ...newSortBy}))
-    // }
+
+    function onSetSort(SortBy) {
+        setSortBy(prevSort => ({ ...prevSort, ...SortBy}))
+    }
 
     return (
         <main>
             <section className='info-actions'>
                 <h3>Bugs App</h3>
                 <BugFilter filterBy={filterBy} onSetFilter={onSetFilterBy} /> {/* Use onSetFilter */}
-
+                <BugSort onSetSort={ onSetSort } sortBy={ sortBy } />
                 <button onClick={onAddBug}>Add Bug ⛐</button>
             </section>
             <main>
+            <button><Link to="/bug/edit">Add Bug ⛐</Link></button>
+            <button><Link to="/bug/edit/:bugId">edit Bug ⛐</Link></button>
                 <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />
             </main>
         </main>
