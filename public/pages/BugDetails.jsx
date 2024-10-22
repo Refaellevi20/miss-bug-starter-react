@@ -20,15 +20,22 @@ export function BugDetails() {
             })
     }, [])
 
-    if (!bug) return <h1>loadings....</h1>
-    return bug && <div>
-        <h3>Bug Details 🐛</h3>
-        <h4>{bug.title}</h4>
-        <p>Severity: <span>{bug.severity}</span></p>
-        {/* <p>description: <span>{bug.description}</span></p> */}
-        {bug.labels && bug.labels.length > 0 && <p>Labels: <span>{bug.labels.join(', ')}</span></p>}
-        <Link to="/bug">Back to List</Link>
-    </div>
+    if (!bug) return <h1 className="loading">Loading...</h1>;
 
+    return (
+        <div className="bug-details">
+            <h3 className="bug-title">Bug Details 🐛</h3>
+            <h4 className="bug-subtitle">{bug.title}</h4>
+            <p className="bug-severity">
+                Severity: <span>{bug.severity}</span>
+            </p>
+            {bug.labels && bug.labels.length > 0 && (
+                <p className="bug-labels">
+                    Labels: <span>{bug.labels.join(', ')}</span>
+                </p>
+            )}
+            <Link to="/bug" className="back-link">Back to List</Link>
+        </div>
+    )
 }
 

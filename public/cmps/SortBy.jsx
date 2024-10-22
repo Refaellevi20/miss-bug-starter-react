@@ -26,9 +26,10 @@ export function BugSort({ onSetSort, sortBy }) {
 	return (
 		<form className="bug-sort">
 			<select className="sort-type" name="type" value={sortByToEdit.type} onChange={handleChange}>
-				<option value={''}>----</option>
+				<option value={''}>---</option>
 				<option value="createdAt">Date</option>
 				<option value="severity">Severity</option>
+				<option value="title">title</option>
 			</select>
 			<label>
 				<input type="checkbox" name="dir" value={!sortByToEdit.dir === -1} onChange={handleChange} />

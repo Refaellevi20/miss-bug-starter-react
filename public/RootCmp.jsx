@@ -21,9 +21,8 @@ export function App() {
                         <Route path="/bug" element={<BugIndex />} />
                         <Route path="/bug/:bugId" element={<BugDetails />} />
                         <Route path="/about" element={<AboutUs />} />
-                        <Route path="/bug/edit/" element={<BugEdit />} />
-                        <Route path="/bug/edit/:bugId" element={<BugEdit />} />
-
+                        {/* <Route path="/bug/edit/" element={<BugEdit />} />
+                        <Route path="/bug/edit/:bugId" element={<BugEdit />} /> */}
                     </Routes>
                 </main>
                 <AppFooter />

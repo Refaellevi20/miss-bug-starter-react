@@ -1,0 +1,140 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.loading {
+    text-align: center;
+    font-size: 24px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.bug-details {
+    background: #fff;
+    border-radius: 10px;
+    /* box-shadow: 0 4px 20px rgba(11, 203, 236, 0.6); */
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+    animation: slideIn 0.5s ease-out forwards, changeBoxShadow 5s infinite alternate;
+}
+
+.bug-title {
+    font-size: 28px;
+    color: #ff6347; 
+    animation: bounceIn 0.8s ease;
+}
+
+.bug-subtitle {
+    font-size: 24px;
+    color: #333;
+}
+
+.bug-severity, .bug-labels {
+    font-size: 18px;
+    color: #555;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff; 
+    /* color: #fff; */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.back-link:hover {
+    background-color: #0056b3; 
+    animation: pulse 0.6s infinite;
+    transform: scale(1.05);
+}
+
+.back-link::before {
+    content: '';
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.4);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    animation: ripple 0.6s linear;
+    pointer-events: none; 
+}
+
+.back-link:hover::before {
+    animation: ripple 0.6s linear forwards;
+}
+@keyframes changeBoxShadow {
+    0% {
+        box-shadow: 0 4px 20px rgba(11, 203, 236, 0.6);
+    }
+    25% {
+        box-shadow: 0 4px 20px rgba(236, 11, 117, 0.6); 
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(11, 236, 83, 0.6); 
+    }
+    75% {
+        box-shadow: 0 4px 20px rgba(255, 193, 7, 0.6); 
+    }
+    100% {
+        box-shadow: 0 4px 20px rgba(0, 123, 255, 0.6); 
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes ripple {
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+    }
+}

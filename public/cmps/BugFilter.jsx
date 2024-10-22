@@ -21,10 +21,10 @@ export function BugFilter({ onSetFilter, filterBy }) {
 	}
 
     return (
-        <section className="filter">
-            <h3>Filter</h3>
-            <form onSubmit={onSubmitFilter}></form>
-        	<label htmlFor="title">Title:</label>
+		<section className="filter">
+			<h3 className="filter-title">Filter</h3>
+			<form onSubmit={onSubmitFilter} className="filter-form">
+				<label htmlFor="title">Title:</label>
 				<input
 					value={filterByToEdit.txt}
 					onChange={handleChange}
@@ -32,8 +32,9 @@ export function BugFilter({ onSetFilter, filterBy }) {
 					id="title"
 					type="text"
 					placeholder="By Title"
+					className="filter-input"
 				/>
-
+	
 				<label htmlFor="severity">Severity:</label>
 				<input
 					value={filterByToEdit.severity}
@@ -42,8 +43,9 @@ export function BugFilter({ onSetFilter, filterBy }) {
 					id="severity"
 					type="number"
 					placeholder="By Severity"
+					className="filter-input"
 				/>
-
+	
 				<label htmlFor="labels">Labels:</label>
 				<input
 					value={filterByToEdit.labels}
@@ -52,10 +54,11 @@ export function BugFilter({ onSetFilter, filterBy }) {
 					id="labels"
 					type="text"
 					placeholder="By labels"
+					className="filter-input"
 				/>
-
-				{/* <button>Filter Bugs</button> */}
-        </section>
-    )
+	
+				<button type="submit" className="filter-button">Filter Bugs</button>
+			</form>
+		</section>
+	)
 }
-
