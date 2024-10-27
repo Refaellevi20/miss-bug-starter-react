@@ -33,7 +33,7 @@ export function DeletedBugs() {
                     ))
                 )}
             </div>
-            <Link to="/bug" className="back-link">Back to List</Link>
+            <Link to="/bug" className="back-link">List</Link>
         </section>
         </section>
     )

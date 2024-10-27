@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node server.js",
-    "dev": "set PORT=3030&nodemon --ignore \"./data\" server.js",
+    "dev": "set PORT=3020&nodemon --ignore \"./data\" server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

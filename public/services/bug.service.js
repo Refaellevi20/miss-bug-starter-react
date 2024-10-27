@@ -61,6 +61,23 @@ function save(bug) {
     }
 }
 
+// function save(bug) {
+
+//     // if (bug._id)   return storageService.put(bug_KEY, bug)
+//     // else            return storageService.post(bug_KEY, bug)
+
+//     const method = bug._id ? 'put' : 'post'
+//     return axios[method](BASE_URL, bug).then(res => res.data)
+    
+// }
+
+// function save(bug) {
+//     console.log(bug)
+//     const method = bug._id ? 'put' : 'post'
+//     return axios[method](BASE_URL + bug._id || '', bug).then(res => res.data)
+// }
+
+
 function getEmptyBug() {
     return { title: '', description: '', severity: 0,labels: []}
 }

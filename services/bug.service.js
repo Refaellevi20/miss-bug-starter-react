@@ -108,7 +108,7 @@ function getById(bugId) {
 // }
 
 
-function remove(bugId) {
+function remove(bugId,loggedinUser) {
     const bugIdx = bugs.findIndex(bug => bug._id === bugId)
     if (bugIdx < 0) return Promise.reject('Cannot find bug', bugId)
         const bug = bugs[bugIdx]
@@ -131,6 +131,7 @@ function save(bugToSave,loggedinUser) {
     } else {
         bugToSave._id = utilService.makeId()
         bugToSave.createdAt = Date.now()
+        bugToSave.creator = loggedinUser
         bugToSave.labels = bugToSave.labels?.length ? bugToSave.labels : ['no label']
         bugs.unshift(bugToSave)
     }

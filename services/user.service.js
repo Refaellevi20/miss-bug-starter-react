@@ -15,7 +15,6 @@ export const userService = {
     validateToken
 }
 
-
 function getLoginToken(user) {
     const str = JSON.stringify(user)
     const encryptedStr = cryptr.encrypt(str)
@@ -29,16 +28,20 @@ function validateToken(token) {
 }
 
 function checkLogin({ username, password }) {
-    var user = users.find(user => user.username === username)
-    if (user)  {
-        user = {
-            _id : user._id,
-            fullname : user.fullname,
-            isAdmin : user.isAdmin,
-        }
-    }
-    return Promise.resolve(user)
+    // You might want to remove the password validation for dev
+	var user = users.find(user => 
+        user.username === username && user.password === password)
+        
+	if (user) {
+		user = {
+			_id: user._id,
+			fullname: user.fullname,
+			isAdmin: user.isAdmin,
+		}
+	}
+	return Promise.resolve(user)
 }
+
 
 function query() {
     return Promise.resolve(users)
@@ -57,7 +60,7 @@ function remove(userId) {
 
 function save(user) {
     user._id = utilService.makeId()
-    // TODO: severe security issue- attacker can post admins
+    // T: severe security issue- attacker can post admins
     users.push(user)
     return _saveUsersToFile().then(() => user)
 

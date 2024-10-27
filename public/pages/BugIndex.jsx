@@ -137,7 +137,7 @@ export function BugIndex() {
                 showSuccessMsg('Bug updated')
             })
             .catch(err => {
-                console.log('Error from onEditBug ->', err)
+                console.log('Error from onEditBug =>', err)
                 showErrorMsg('Cannot update bug')
             })
     }
@@ -200,14 +200,17 @@ export function BugIndex() {
             <NavLink to="/login-register"><button className='View-Deleted'>login or sing up</button> </NavLink>
             <div className="button-container">
                 <button className='log-in' onClick={() => onToggleUser('')}>Log in</button>
+                {/* <button className='log-in' onClick={() => onToggleUser('')}>Log in / Sign up</button> */}
                 <button className='sign-up' onClick={() => onToggleUser('active')}>Sign up</button>
             </div>
+            
             {isUserClicked && (
                 <div className="modal" onClick={() => setIsUserClicked(false)}>
                     <div className="modal-content" onClick={(ev) => ev.stopPropagation()}>
                     {/* <button className="close-button" onClick={() => onToggleUser('')}>×</button> */}
                         <LoginRegister onToggleUser={() => setIsUserClicked(false)} action={action} />
                     </div>
+                    <button className="close-button" onClick={() => onToggleUser('')}>x</button> 
                 </div>
             )}
             {/* <button onClick={onToggleUser}>Toggle Login/Register</button> */}

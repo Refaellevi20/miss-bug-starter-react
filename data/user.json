@@ -11,7 +11,7 @@
     "_id": "u102",
     "username": "bob",
     "fullname": "Bob Johnson",
-    "password": "secret2",
+    "password": "bob",
     "score": 100,
     "isAdmin": true
   },

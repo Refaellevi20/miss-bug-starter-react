@@ -1,6 +1,8 @@
 const { Link } = ReactRouterDOM
 const { useEffect, useState,useRef } = React
-// import { FaUser, FaLock,FaEnvelope  } from "react-icons/fa"; 
+// import { FaUser, FaLock,FaEnvelope,CiUser  } from "react-icons/fa"; 
+// import { CiUser } from "react-icons/ci";
+
 
 
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
@@ -38,7 +40,8 @@ export function LoginSignup({ onSetUser,onToggleUser}) {
     return (
         <div>
             <div className={`wrapper ${isSignup ? 'active' : ''}`}>
-            <button className="close-button" onClick={() => onToggleUser('')}>×</button>    
+            {/* <button className="close-button" onClick={() => onToggleUser('')}>x</button>  */}
+            {/* <Link to="/bug" className="close-button">×</Link>    */}
                 {/* login Form */}
                 <div className={`form-box login ${!isSignup ? 'active' : ''}`}>
                     <form onSubmit={handleSubmit}>
@@ -63,7 +66,10 @@ export function LoginSignup({ onSetUser,onToggleUser}) {
                                 onChange={handleChange}
                                 required
                                 autoComplete="off"
+                                
                             />
+                            {/* <i className="fa-solid fa-lock"></i> */}
+                            {/* <CiUser /> */}
                         </div>
                         <div className='remember-forgot'>
                             <label className="remember-me">

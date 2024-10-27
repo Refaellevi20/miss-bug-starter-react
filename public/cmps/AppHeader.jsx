@@ -20,6 +20,7 @@ export function AppHeader() {
     }
 
     function onSetUser(user) {
+        // setUser(loggedInUser)
         setUser(user)
         navigate('/bug')
     }

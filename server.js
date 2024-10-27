@@ -11,6 +11,7 @@ import cookieParser from 'cookie-parser'
 
 const app = express()
 const PORT = process.env.PORT || 3020
+// const PORT =  3020
 
 app.use(express.static("public"))
 app.use(cookieParser())
@@ -51,7 +52,7 @@ app.post("/api/bug", (req, res) => {
     // console.log("req.body:", req.body)
     const bugToSave = req.body
     bugService
-        .save(bugToSave)
+        .save(bugToSave,loggedinUser)
         .then((bug) => res.send(bug))
         .catch((err) => {
             loggerService.error("Cannot save bug", err)
@@ -74,7 +75,7 @@ app.put('/api/bug/:id', (req, res) => {
         labels: req.body.labels || '',
     }
 
-    bugService.save(bugToSave)
+    bugService.save(bugToSave,loggedinUser)
         .then(savedBug => res.send(savedBug))
         .catch(err => {
             loggerService.error('Cannot save bug', err)
@@ -114,7 +115,7 @@ app.delete('/api/bug/:id', (req, res) => {
     if (!loggedinUser) return res.status(401).send('Cannot remove bug')
     // const { bugId } = req.params
     const bugId = req.params.id
-    bugService.remove(bugId)
+    bugService.remove(bugId,loggedinUser)
         .then(() => res.send(`bug ${bugId} removed successfully!`))
         .catch(err => {
             loggerService.error('Cannot remove bug', err)
@@ -180,6 +181,7 @@ app.get('/**', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`)
+    // loggerService.info(`Server is running on http://localhost:${PORT}`)
 })
 
 // "dev": "set PORT=3030&nodemon --ignore \"./data\" server.js",
