@@ -9,7 +9,7 @@ import { LoginSignup } from "./LoginSignup.jsx"
 // const { useEffect, useState, useRef } = React
 const { Link } = ReactRouterDOM
 
-export function LoginRegister({ onToggleUser, action, registerLink, loginLink,user,onSetUser  }) {
+export function LoginRegister({ onToggleUser, action, registerLink, loginLink,user,onSetUser,setUser,onLogout   }) {
     // const emailRef = useRef()
     // const passwordRef = useRef()
 
@@ -24,16 +24,17 @@ export function LoginRegister({ onToggleUser, action, registerLink, loginLink,us
     //     setAction('')
     // }
 
+
     return (
         <section>
             {user ? (
                 <section>
-                    {/* <Link to={`/user/${user._id}`}>Hello {user.fullname}</Link>
-                    <button onClick={onLogout}>Logout</button> */}
+                    <Link to={`/user/${user._id}`}>Hello {user.fullname}</Link>
+                    <button onClick={onLogout}>Logout</button>
                 </section>
             ) : (
                 <section>
-                    <LoginSignup onSetUser={onSetUser} />
+                    <LoginSignup onSetUser={onSetUser} onToggleUser={onToggleUser} />
                 </section>
             )}
         </section>

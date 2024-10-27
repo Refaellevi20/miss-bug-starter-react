@@ -244,9 +244,6 @@ export function BugIndex() {
                 </div>
                 <BugList bugs={filteredBugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} className="bug-list" />
             </section>
-
-
-
         </main>
     )
 }

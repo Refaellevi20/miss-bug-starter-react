@@ -8,7 +8,7 @@ const { useEffect, useState,useRef } = React
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
 import { userService } from '../services/user.service.js' 
 
-export function LoginSignup({ onSetUser,onToggleUser}) {
+export function LoginSignup({ onSetUser,onToggleUser,onLogout}) {
 
     const [isSignup, setIsSignUp] = useState(false)
     const [credentials, setCredentials] = useState(userService.getEmptyCredentials())
@@ -25,9 +25,20 @@ export function LoginSignup({ onSetUser,onToggleUser}) {
 
     function login(credentials) {
         userService.login(credentials)
-            .then(onSetUser)
-            .then(() => { showSuccessMsg('Logged in successfully') })
+            .then((user) =>{
+                console.log('user',user);
+                
+                onSetUser(user)})
+            .then(() => { showSuccessMsg('Logged in successfully')})
             .catch((err) => { showErrorMsg('Oops try again',err) })
+            .finally(() => {
+                //! a test for me
+                if (typeof onToggleUser === 'function') {
+                    onToggleUser('')
+                } else {
+                    console.log('onToggleUser is not a function')
+                }
+            })
     }
 
     function signup(credentials) {
@@ -35,6 +46,14 @@ export function LoginSignup({ onSetUser,onToggleUser}) {
             .then(onSetUser)
             .then(() => { showSuccessMsg('Signed in successfully') })
             .catch((err) => { showErrorMsg('Oops try again',err) })
+            .finally(() => {
+                //! a test for me
+                if (typeof onToggleUser === 'function') {
+                    onToggleUser('')
+                } else {
+                    console.log('onToggleUser is not a function')
+                }
+            })
     }
 
     return (

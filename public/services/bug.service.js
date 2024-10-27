@@ -51,6 +51,8 @@ function remove(bugId) {
     return axios.delete(BASE_URL + bugId).then(res => res.data)   
 }
 
+//! the save is the problom for the edit
+
 function save(bug) {
     console.log(bug)
     if (bug._id) {

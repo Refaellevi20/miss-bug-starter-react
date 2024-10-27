@@ -7,23 +7,25 @@ import { userService } from '../services/user.service.js'
 
 import { UserMsg } from './UserMsg.jsx'
 import { LoginSignup } from '../pages/LoginSignup.jsx'
+import { LoginRegister } from '../pages/LoginRegister.jsx'
 
 
 export function AppHeader() {
     const navigate = useNavigate()
     const [user, setUser] = useState(userService.getLoggedinUser())
 
+
     function onLogout() {
         userService.logout()
             .then(() => onSetUser(null))
-            .catch(err => showErrorMsg('OOPs try again'))
+            .catch(err => showErrorMsg('OOPs try again',err))
     }
 
     function onSetUser(user) {
-        // setUser(loggedInUser)
         setUser(user)
         navigate('/bug')
     }
+
     return (
         <header className='container'>
             <UserMsg />
@@ -42,6 +44,8 @@ export function AppHeader() {
             ) : (
                 <section>
                     {/* <Link to="/login-register">Login/Register</Link> */}
+                    <LoginRegister user={user} onSetUser={onSetUser} onLogout={onLogout} />
+                    {/* <LoginSignup onSetUser={onSetUser} onToggleUser={onToggleUser} /> */}
 
                     {/* <LoginSignup onSetUser={onSetUser} /> */}
                 </section>

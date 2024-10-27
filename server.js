@@ -48,7 +48,7 @@ app.get('/api/bug', (req, res) => {
 // add
 app.post("/api/bug", (req, res) => {
     const loggedinUser = userService.validateToken(req.cookies.loginToken)
-    if (!loggedinUser) return res.status(401).send('Cannot remove bug')
+    if (!loggedinUser) return res.status(401).send('Cannot add bug')
     // console.log("req.body:", req.body)
     const bugToSave = req.body
     bugService
@@ -63,7 +63,7 @@ app.post("/api/bug", (req, res) => {
 //* UPDATE 
 app.put('/api/bug/:id', (req, res) => {
     const loggedinUser = userService.validateToken(req.cookies.loginToken)
-    if (!loggedinUser) return res.status(401).send('Cannot remove bug')
+    if (!loggedinUser) return res.status(401).send('Cannot UPDATE bug')
     const bugToSave = {
         //^only the severity
         //^ 
@@ -72,7 +72,7 @@ app.put('/api/bug/:id', (req, res) => {
         //* i can do it also with a libery of Number
         severity: +req.body.severity || 0,
         description: req.body.description || '',
-        labels: req.body.labels || '',
+        labels: req.body.labels || '', // []
     }
 
     bugService.save(bugToSave,loggedinUser)
