@@ -1,5 +1,6 @@
 const { useState, useEffect } = React
 
+import './home.scss'
 export function BugSort({ onSetSort, sortBy }) {
 	const [sortByToEdit, setSortByToEdit] = useState({ ...sortBy })
 
@@ -25,16 +26,33 @@ export function BugSort({ onSetSort, sortBy }) {
 
 	return (
 		<form className="bug-sort">
-			<select className="sort-type" name="type" value={sortByToEdit.type} onChange={handleChange}>
-				<option value={''}>---</option>
+			<label htmlFor="sortType" className="sort-label">Sort By:</label>
+			<select
+				className="sort-type"
+				name="type"
+				id="sortType"
+				value={sortByToEdit.type}
+				onChange={handleChange}
+			>
+				<option value="">---</option>
 				<option value="createdAt">Date</option>
 				<option value="severity">Severity</option>
-				<option value="title">title</option>
+				<option value="title">Title</option>
 			</select>
-			<label>
-				<input type="checkbox" name="dir" value={!sortByToEdit.dir === -1} onChange={handleChange} />
-				Descending
-			</label>
+			
+			<div className="sort-direction">
+				<label className="sort-checkbox">
+					<input 
+						type="checkbox" 
+						name="dir" 
+						checked={sortByToEdit.dir === -1} 
+						onChange={handleChange} 
+					/>
+					Descending
+				</label>
+			</div>
 		</form>
 	)
 }
+
+

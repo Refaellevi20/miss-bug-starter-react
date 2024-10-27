@@ -1,7 +1,10 @@
 import { bugService } from "./services/bug.service.js"
 import { loggerService } from "./services/logger.service.js"
+import { userService } from "./services/user.service.js" 
+
 import { pdfService } from "./services/pdf.service.js"
 
+import path from 'path'
 import express from 'express'
 import cookieParser from 'cookie-parser'
 
@@ -43,25 +46,29 @@ app.get('/api/bug', (req, res) => {
 
 // add
 app.post("/api/bug", (req, res) => {
-    console.log("req.body:", req.body)
+    const loggedinUser = userService.validateToken(req.cookies.loginToken)
+    if (!loggedinUser) return res.status(401).send('Cannot remove bug')
+    // console.log("req.body:", req.body)
     const bugToSave = req.body
     bugService
-      .save(bugToSave)
-      .then((bug) => res.send(bug))
-      .catch((err) => {
-        loggerService.error("Cannot save bug", err)
-        res.status(400).send("Cannot save bug")
-      })
-  })
+        .save(bugToSave)
+        .then((bug) => res.send(bug))
+        .catch((err) => {
+            loggerService.error("Cannot save bug", err)
+            res.status(400).send("Cannot save bug")
+        })
+})
 
 //* UPDATE 
-app.put('/api/bug', (req, res) => {
+app.put('/api/bug/:id', (req, res) => {
+    const loggedinUser = userService.validateToken(req.cookies.loginToken)
+    if (!loggedinUser) return res.status(401).send('Cannot remove bug')
     const bugToSave = {
         //^only the severity
         //^ 
         _id: req.body._id,
         title: req.body.title || '',
-        //* i can do it also with a libry of Number
+        //* i can do it also with a libery of Number
         severity: +req.body.severity || 0,
         description: req.body.description || '',
         labels: req.body.labels || '',
@@ -103,6 +110,8 @@ app.get("/api/bug/:bugId", (req, res) => {
 
 //* REMOVE
 app.delete('/api/bug/:id', (req, res) => {
+    const loggedinUser = userService.validateToken(req.cookies.loginToken)
+    if (!loggedinUser) return res.status(401).send('Cannot remove bug')
     // const { bugId } = req.params
     const bugId = req.params.id
     bugService.remove(bugId)
@@ -113,6 +122,56 @@ app.delete('/api/bug/:id', (req, res) => {
         })
 })
 
+// AUTH API
+app.get('/api/user', (req, res) => {
+    userService.query()
+        .then((users) => {
+            res.send(users)
+        })
+        .catch((err) => {
+            console.log('Cannot load users', err)
+            res.status(400).send('Cannot load users')
+        })
+})
+
+app.post('/api/auth/login', (req, res) => {
+    const credentials = req.body
+    userService.checkLogin(credentials)
+        .then(user => {
+            if (user) {
+                const loginToken = userService.getLoginToken(user)
+                res.cookie('loginToken', loginToken)
+                res.send(user)
+            } else {
+                res.status(401).send('Invalid Credentials')
+            }
+        })
+})
+
+app.post('/api/auth/signup', (req, res) => {
+    const credentials = req.body
+    userService.save(credentials)
+        .then(user => {
+            if (user) {
+                const loginToken = userService.getLoginToken(user)
+                res.cookie('loginToken', loginToken)
+                res.send(user)
+            } else {
+                res.status(400).send('Cannot signup')
+            }
+        })
+})
+
+app.post('/api/auth/logout', (req, res) => {
+    res.clearCookie('loginToken')
+    res.send('logged-out!')
+})
+
+app.get('/**', (req, res) => {
+    res.sendFile(path.resolve('public/index.html'))
+})
+
+
 
 // const port = 3040
 // app.listen(port, () =>
@@ -122,3 +181,5 @@ app.delete('/api/bug/:id', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`)
 })
+
+// "dev": "set PORT=3030&nodemon --ignore \"./data\" server.js",

@@ -3,9 +3,10 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { BugList } from '../cmps/BugList.jsx'
 import { BugFilter } from '../cmps/BugFilter.jsx'
 import { BugSort } from '../cmps/SortBy.jsx'
+import { LoginRegister } from './LoginRegister.jsx'
+// import {CarModal } from './CarModal'
 
-
-const { Link, useSearchParams } = ReactRouterDOM
+const { Link, useSearchParams, NavLink } = ReactRouterDOM
 const { useState, useEffect } = React
 
 export function BugIndex() {
@@ -16,6 +17,10 @@ export function BugIndex() {
     const [labels, setLabels] = useState([])
     const [filterBy, setFilterBy] = useState(bugService.getFilterFromParams(searchParams) || {})
     const [sortBy, setSortBy] = useState({ type: '', dir: 1 })
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [selectedBugPrice, setSelectedBugPrice] = useState(0)
+    const [isUserClicked, setIsUserClicked] = useState(false)
+    const [action, setAction] = useState('')
 
     useEffect(() => {
         setSearchParams(filterBy)
@@ -35,8 +40,8 @@ export function BugIndex() {
             })
     }
 
-    function extractUniqueLabels(bugs) {
 
+    function extractUniqueLabels(bugs) {
         //* new set new arr
         //* redu
         const allLabels = new Set()
@@ -77,7 +82,7 @@ export function BugIndex() {
         setSelectedLabel(label)
         setFilterBy(prevFilter => ({ ...prevFilter, label }))
         filterBugs(bugs)
-        console.log(label) 
+        console.log(label)
     }
 
     function onRemoveBug(bugId) {
@@ -85,9 +90,14 @@ export function BugIndex() {
             .then(() => {
                 console.log('Deleted Successfully!')
                 const updatedBugs = bugs.filter(bug => bug._id !== bugId)
+                const deletedBug = bugs.find(bug => bug._id === bugId)
                 setBugs(updatedBugs)
                 filterBugs(updatedBugs)
                 showSuccessMsg('Bug removed')
+                //* or use local storage in utils or whatever
+                const existingDeletedBugs = JSON.parse(localStorage.getItem('deletedBugs')) || []
+                existingDeletedBugs.push(deletedBug)
+                localStorage.setItem('deletedBugs', JSON.stringify(existingDeletedBugs))
             })
             .catch(err => {
                 console.log('Error from onRemoveBug =>', err)
@@ -146,8 +156,8 @@ export function BugIndex() {
     function onChangePage(diff) {
         if (filterBy.pageIdx === undefined) return
         let nextPageIdx = filterBy.pageIdx + diff
-        console.log('nextPageIdx',nextPageIdx);
-        
+        console.log('nextPageIdx', nextPageIdx)
+
         if (nextPageIdx < 0) nextPageIdx = 0
         setFilterBy(prevFilter => ({ ...prevFilter, pageIdx: nextPageIdx }))
     }
@@ -159,8 +169,49 @@ export function BugIndex() {
         }))
     }
 
+    function handleOpenModal(price) {
+        setSelectedBugPrice(price)
+        setIsModalOpen(true)
+    }
+
+    function handleCloseModal() {
+        setIsModalOpen(false)
+    }
+
+    function onToggleUser(action) {
+        setIsUserClicked(true)
+        setAction(action)
+    }
+
+    function registerLink() {
+        setAction('active')
+    }
+
+    function loginLink() {
+        setAction('')
+    }
+
+    // if(bugId) return <div>lolo</div>
+
     return (
         <main className="bugs-app">
+            <Link to="/bug/edit">add bug by new window</Link><br />
+            <NavLink to="/deleted-bugs"><button className='View-Deleted'>View Deleted Bugs</button> </NavLink>
+            <NavLink to="/login-register"><button className='View-Deleted'>login or sing up</button> </NavLink>
+            <div className="button-container">
+                <button className='log-in' onClick={() => onToggleUser('')}>Log in</button>
+                <button className='sign-up' onClick={() => onToggleUser('active')}>Sign up</button>
+            </div>
+            {isUserClicked && (
+                <div className="modal" onClick={() => setIsUserClicked(false)}>
+                    <div className="modal-content" onClick={(ev) => ev.stopPropagation()}>
+                    {/* <button className="close-button" onClick={() => onToggleUser('')}>×</button> */}
+                        <LoginRegister onToggleUser={() => setIsUserClicked(false)} action={action} />
+                    </div>
+                </div>
+            )}
+            {/* <button onClick={onToggleUser}>Toggle Login/Register</button> */}
+            {/* <Link to="/api/edit">edit bug</Link> */}
             <section className="info-actions">
                 <h3 className="app-title">Bugs App</h3>
                 <div className="filters-and-sorts">
@@ -190,6 +241,9 @@ export function BugIndex() {
                 </div>
                 <BugList bugs={filteredBugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} className="bug-list" />
             </section>
+
+
+
         </main>
     )
 }

@@ -1,0 +1,125 @@
+[
+  {
+    "_id": "u101",
+    "username": "alice",
+    "fullname": "Alice Smith",
+    "password": "puki",
+    "score": 100,
+    "isAdmin": false
+  },
+  {
+    "_id": "u102",
+    "username": "bob",
+    "fullname": "Bob Johnson",
+    "password": "secret2",
+    "score": 100,
+    "isAdmin": true
+  },
+  {
+    "_id": "u103",
+    "username": "charlie",
+    "fullname": "Charlie Brown",
+    "password": "kiki",
+    "score": 50
+  },
+  {
+    "_id": "u104",
+    "username": "dana",
+    "fullname": "Dana White",
+    "password": "aaa",
+    "score": 75
+  },
+  {
+    "_id": "u105",
+    "username": "eli",
+    "fullname": "Eli Black",
+    "password": "aaa",
+    "score": 60
+  },
+  {
+    "_id": "u106",
+    "username": "fiona",
+    "fullname": "Fiona Green",
+    "password": "gugu",
+    "score": 90,
+    "isAdmin": true
+  },
+  {
+    "_id": "u107",
+    "username": "george",
+    "fullname": "George Blue",
+    "password": "mumu",
+    "score": 45
+  },
+  {
+    "_id": "u108",
+    "username": "hannah",
+    "fullname": "Hannah Yellow",
+    "password": "bob",
+    "score": 80
+  },
+  {
+    "_id": "u109",
+    "username": "ian",
+    "fullname": "Ian Red",
+    "password": "rr",
+    "score": 40
+  },
+  {
+    "_id": "u110",
+    "username": "jack",
+    "fullname": "Jack Grey",
+    "password": "halo",
+    "score": 30,
+    "isAdmin": true
+  },
+  {
+    "_id": "u111",
+    "username": "lily",
+    "fullname": "Lily White",
+    "password": "",
+    "score": 20
+  },
+  {
+    "username": "refael14levi@gmail.com",
+    "password": "11",
+    "fullname": "rr",
+    "_id": "CLnAK"
+  },
+  {
+    "username": "bob",
+    "password": "secret2",
+    "fullname": "Bob Johnson",
+    "_id": "doKss"
+  },
+  {
+    "username": "Alice Smith",
+    "password": "55",
+    "fullname": "uj0i9op",
+    "_id": "z4QeM"
+  },
+  {
+    "username": "bob",
+    "password": "cersc",
+    "fullname": "ax",
+    "_id": "1GnSK"
+  },
+  {
+    "username": "refael14levi@gmail.com",
+    "password": "yy",
+    "fullname": "uj0i9op",
+    "_id": "DWUjl"
+  },
+  {
+    "_id": "KxwAD",
+    "username": "aleice",
+    "fullname": "Aliece Smith",
+    "password": "peuki",
+    "score": 100,
+    "isAdmin": false
+  },
+  {
+    "_id": "rJCsx",
+    "isAdmin": true
+  }
+]

@@ -3,6 +3,7 @@ import { bugService } from '../services/bug.service.js'
 
 export function BugFilter({ onSetFilter, filterBy }) {
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
+ const [isModalOpen, setIsModalOpen] = useState(false)
 
     useEffect(() => {
 		onSetFilter(filterByToEdit)
@@ -24,7 +25,7 @@ export function BugFilter({ onSetFilter, filterBy }) {
 		<section className="filter">
 			<h3 className="filter-title">Filter</h3>
 			<form onSubmit={onSubmitFilter} className="filter-form">
-				<label htmlFor="title">Title:</label>
+				<label htmlFor="title"><strong>Title:</strong></label>
 				<input
 					value={filterByToEdit.txt}
 					onChange={handleChange}
@@ -34,8 +35,8 @@ export function BugFilter({ onSetFilter, filterBy }) {
 					placeholder="By Title"
 					className="filter-input"
 				/>
-	
-				<label htmlFor="severity">Severity:</label>
+	<br />
+				<label htmlFor="severity"><strong>Severity:</strong></label>
 				<input
 					value={filterByToEdit.severity}
 					onChange={handleChange}
@@ -45,8 +46,8 @@ export function BugFilter({ onSetFilter, filterBy }) {
 					placeholder="By Severity"
 					className="filter-input"
 				/>
-	
-				<label htmlFor="labels">Labels:</label>
+	<br />
+				<label htmlFor="labels"><strong>Labels:</strong></label>
 				<input
 					value={filterByToEdit.labels}
 					onChange={handleChange}
@@ -57,7 +58,7 @@ export function BugFilter({ onSetFilter, filterBy }) {
 					className="filter-input"
 				/>
 	
-				<button type="submit" className="filter-button">Filter Bugs</button>
+				{/* <button type="submit" className="filter-button">Filter Bugs</button> */}
 			</form>
 		</section>
 	)

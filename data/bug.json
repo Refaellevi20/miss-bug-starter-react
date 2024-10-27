@@ -1,165 +1,167 @@
 [
     {
-        "title": "bfb",
-        "severity": 55,
-        "_id": "Dojkf",
-        "createdAt": 1729605140938,
-        "labels": ["no label"],
-        "images": ["https://images.unsplash.com/photo-1561437008-1a7e0e8f148b"]
+        "title": "tet",
+        "severity": 8,
+        "_id": "4zWfq",
+        "createdAt": 1730031121424,
+        "labels": [
+            "no label"
+        ]
     },
     {
-        "_id": "GW1OC",
-        "title": "dgf",
-        "severity": 5,
-        "description": "",
-        "labels": ["love"],
-        "images": ["https://images.unsplash.com/photo-1561437008-1a7e0e8f148b"]
+        "title": "tt",
+        "severity": 6,
+        "_id": "Vffey",
+        "createdAt": 1730026457620,
+        "labels": [
+            "no label"
+        ]
     },
     {
-        "title": "asdddddddd",
-        "description": "asadd",
-        "severity": 5,
-        "_id": "JXB7H",
-        "createdAt": 1710873400487,
-        "labels": ["issue"],
-        "images": ["https://images.unsplash.com/photo-1561437008-1a7e0e8f148b"]
-    },
-    {
-        "title": "szddddf",
-        "description": "zdsdf",
-        "severity": 3,
-        "_id": "OgnKP",
-        "createdAt": 1710873482522,
-        "images": ["https://images.unsplash.com/photo-1561437008-1a7e0e8f148b"]
-    },
-    {
-        "title": "sdaf",
-        "severity": 3,
-        "description": "asdf",
-        "_id": "G8Aob",
-        "createdAt": 1710880357537,
-        "labels": ["issue"],
-        "images": ["https://images.unsplash.com/photo-1561437008-1a7e0e8f148b"]
-    },
-    {
-        "title": "sad",
-        "description": "afd",
+        "_id": "bug001",
+        "title": "t",
         "severity": 2,
-        "_id": "qHNjb",
-        "createdAt": 1710880421489,
-        "labels": ["low", "issue"],
-        "images": ["https://images.unsplash.com/photo-1561437008-1a7e0e8f148b"]
+        "description": "errors when clicking Save",
+        "labels": "",
+        "creator": {
+            "_id": "u101",
+            "fullname": "Alice Smith",
+            "isAdmin": false
+        }
     },
     {
-        "_id": "N1bBK",
-        "createdAt": 1729517668896,
-        "labels": ["minor", "love"],
-        "title": "",
-        "severity": 3,
-        "description": "",
-        "images": ["https://images.unsplash.com/photo-1561437008-1a7e0e8f148b"]
-    },
-    {
-        "_id": "7n8TE",
-        "title": "fgd",
-        "severity": 4,
-        "description": "",
-        "createdAt": 1729517723489,
-        "labels": ["minor", "issue"],
-        "images": ["https://images.unsplash.com/photo-1561437008-1a7e0e8f148b"]
-    },
-    {
-        "_id": "bdeXh",
-        "title": "",
-        "severity": 44,
-        "description": "",
-        "labels": ["no label", "love"],
-        "createdAt": 1729591379200,
-        "images": ["https://images.unsplash.com/photo-1561437008-1a7e0e8f148b"]
-    },
-    {
-        "_id": "t2nWV",
-        "title": "aa",
-        "severity": 22,
-        "description": "",
-        "labels": ["no label"],
-        "createdAt": 1729596976700,
-        "images": ["https://images.unsplash.com/photo-1605826449898-9d6f4731d6e4"]
-    },
-    {
-        "title": "a",
-        "severity": 134,
-        "_id": "uQ0vl",
-        "createdAt": 1729597799593,
-        "labels": ["no label", "love"],
-        "images": ["https://images.unsplash.com/photo-1592831505402-b8d8d48a19c1"]
-    },
-    {
-        "title": "t33r",
+        "_id": "bug002",
+        "title": "ww",
+        "description": "errors when clicking Save",
         "severity": 1,
-        "_id": "yDyyu",
-        "createdAt": 1729597825031,
-        "labels": ["no label", "love"],
-        "images": ["https://images.unsplash.com/photo-1535129423134-ec6798c09c82"]
+        "labels": [
+            "end"
+        ],
+        "createdAt": 1729674599545,
+        "creator": {
+            "_id": "u102",
+            "fullname": "Bob Johnson",
+            "isAdmin": true
+        }
     },
     {
-        "title": "ggg",
-        "severity": 777,
-        "_id": "F2641",
-        "createdAt": 1729598335555,
-        "labels": ["no label"],
-        "images": ["https://images.unsplash.com/photo-1559063138-0630c5a2c1c6"]
-    },
-    {
-        "title": "r",
-        "severity": 12,
-        "_id": "rPEIZ",
-        "createdAt": 1729598620664,
-        "labels": ["no label"],
-        "images": ["https://images.unsplash.com/photo-1544005313-94ddf0286df4"]
-
-    },
-    {
-        "_id": "Hta6m",
-        "title": "as",
+        "_id": "bug003",
+        "title": "ff",
+        "description": "errors when clicking Save",
         "severity": 3,
-        "description": "as3d",
-        "labels": ["minor"],
-        "images": ["https://images.unsplash.com/photo-1593642632881-4b56e8c4a1be"]
+        "createdAt": 1729674583480,
+        "labels": [
+            "no label"
+        ],
+        "creator": {
+            "_id": "u103",
+            "fullname": "Charlie Brown",
+            "isAdmin": false
+        }
     },
     {
-        "_id": "HKYOO",
+        "_id": "bug004",
         "title": "dfedr",
         "severity": 3,
-        "description": "",
-        "images": ["https://images.unsplash.com/photo-1581972573390-5a6317d7b978"]
+        "description": "errors when clicking Save",
+        "creator": {
+            "_id": "u104",
+            "fullname": "Dana White"
+        }
     },
     {
-        "_id": "dapZN",
-        "title": "t",
+        "_id": "bug005",
+        "title": "ggg",
         "severity": 3,
-        "description": "",
-        "labels": "",
-        "images": ["https://images.unsplash.com/photo-1575585181820-b14cfb641b95"]
+        "createdAt": 1729598335555,
+        "labels": [
+            "no label"
+        ],
+        "description": "errors when clicking Save",
+        "creator": {
+            "_id": "u105",
+            "fullname": "Eli Black",
+            "isAdmin": false
+        }
     },
     {
-        "_id": "qR1bW",
+        "_id": "bug006",
         "title": "ccccccccc",
         "severity": 4,
-        "description": "",
-        "images": ["https://images.unsplash.com/photo-1575585181820-b14cfb641b95"]
+        "description": "errors when clicking Save",
+        "creator": {
+            "_id": "u106",
+            "fullname": "Fiona Green",
+            "isAdmin": true
+        }
     },
     {
-        "_id": "EyQdv",
-        "labels": ["minor"],
-        "images": ["https://images.unsplash.com/photo-1575585181820-b14cfb641b95"]
-    },
-    {
-        "_id": "2JHbY",
+        "_id": "bug007",
         "title": "hgggggggg",
         "severity": 5,
-        "description": "",
-        "images": ["https://images.unsplash.com/photo-1575585181820-b14cfb641b95"]
+        "description": "errors when clicking Save",
+        "creator": {
+            "_id": "u107",
+            "fullname": "George Blue",
+            "isAdmin": false
+        }
+    },
+    {
+        "_id": "bug008",
+        "title": "r",
+        "severity": 12,
+        "createdAt": 1729598620664,
+        "labels": [
+            "no label"
+        ],
+        "description": "errors when clicking Save",
+        "creator": {
+            "_id": "u108",
+            "fullname": "Hannah Yellow"
+        }
+    },
+    {
+        "_id": "bug009",
+        "title": "aa",
+        "severity": 22,
+        "description": "errors when clicking Save",
+        "labels": [
+            "no label"
+        ],
+        "createdAt": 1729596976700,
+        "creator": {
+            "_id": "u109",
+            "fullname": "Ian Red",
+            "isAdmin": false
+        }
+    },
+    {
+        "_id": "bug010",
+        "title": "halo",
+        "description": "errors when clicking Save",
+        "severity": 33,
+        "labels": [
+            "minor"
+        ],
+        "createdAt": 1729623912024,
+        "creator": {
+            "_id": "u110",
+            "fullname": "Jack Grey"
+        }
+    },
+    {
+        "_id": "bug011",
+        "title": "",
+        "severity": 44,
+        "description": "errors when clicking Save",
+        "labels": [
+            "no label",
+            "love"
+        ],
+        "createdAt": 1729591379200,
+        "creator": {
+            "_id": "u111",
+            "fullname": "Lily White"
+        }
     }
 ]
-

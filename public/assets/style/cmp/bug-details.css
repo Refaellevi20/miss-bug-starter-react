@@ -2,7 +2,6 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f9;
     margin: 0;
-    padding: 20px;
 }
 
 .loading {
@@ -137,4 +136,9 @@ body {
         transform: translate(-50%, -50%) scale(1);
         opacity: 0;
     }
+}
+
+.delete-button {
+    background-color: red;
+    cursor: pointer;
 }

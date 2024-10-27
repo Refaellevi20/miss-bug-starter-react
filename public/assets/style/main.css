@@ -88,6 +88,7 @@ nav a:hover {
 }
 
 .bug-preview {
+    position: relative;
     background-color: #333;
     color: whitesmoke;
     border-radius: .2em;

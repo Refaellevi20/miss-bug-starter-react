@@ -50,8 +50,7 @@ function query(filterBy = { txt: '', severity: 0, labels: [] }, sortBy = { type:
         bugs.sort((a, b) => (+sortBy.dir) * (a.createdAt - b.createdAt))
     } else if (sortBy.type === 'severity') {
         bugs.sort((a, b) => (+sortBy.dir) * (a.severity - b.severity))
-    }
-    else if (sortBy.type === 'title') {
+    } else if (sortBy.type === 'title') {
         bugs.sort((a, b) => {
             const titleA = a.title || ''
             const titleB = b.title || ''
@@ -61,8 +60,6 @@ function query(filterBy = { txt: '', severity: 0, labels: [] }, sortBy = { type:
     // else {
     //     bugs.sort((a, b) => sortBy.dir * (a[sortBy.type] - b[sortBy.type]))
     // }
-
-
 
     if (filterBy.pageIdx !== undefined) {
         const pageIdx = +filterBy.pageIdx
@@ -114,14 +111,23 @@ function getById(bugId) {
 function remove(bugId) {
     const bugIdx = bugs.findIndex(bug => bug._id === bugId)
     if (bugIdx < 0) return Promise.reject('Cannot find bug', bugId)
+        const bug = bugs[bugIdx]
+    if (!loggedinUser.isAdmin &&
+        bug.creator._id !== loggedinUser._id) {
+        return Promise.reject('Not your bug')
+    }
     bugs.splice(bugIdx, 1)
     return _saveBugsToFile()
 }
 
-function save(bugToSave) {
+function save(bugToSave,loggedinUser) {
     if (bugToSave._id) {
         const bugIdx = bugs.findIndex(bug => bug._id === bugToSave._id)
         bugs[bugIdx] = { ...bugs[bugIdx], ...bugToSave }
+        if (!loggedinUser.isAdmin &&
+            bugToUpdate.creator._id !== loggedinUser._id) {
+            return Promise.reject('Not your bug')
+        }
     } else {
         bugToSave._id = utilService.makeId()
         bugToSave.createdAt = Date.now()

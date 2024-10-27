@@ -1,0 +1,46 @@
+/* .bug-sort {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+    margin: 20px auto;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+} */
+
+.label {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #555;
+}
+
+.checkbox-container input {
+    margin-right: 8px;
+}
+
+select#sortType.sort-type {
+    font-size: 1.3em;
+}

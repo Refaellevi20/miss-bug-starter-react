@@ -20,7 +20,7 @@ export function BugDetails() {
             })
     }, [])
 
-    if (!bug) return <h1 className="loading">Loading...</h1>;
+    if (!bug) return  <img src="assets/img/svg/loading.svg" alt="Loading..." className="loading-spinner"/>
 
     return (
         <div className="bug-details">
@@ -34,6 +34,11 @@ export function BugDetails() {
                     Labels: <span>{bug.labels.join(', ')}</span>
                 </p>
             )}
+             {bug.creator && 
+                <h4>
+                    creator: <Link to={`/user/${bug.creator._id}`}>{bug.creator.fullname}</Link>
+                </h4>
+            }
             <Link to="/bug" className="back-link">Back to List</Link>
         </div>
     )

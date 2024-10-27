@@ -31,7 +31,7 @@ export function BugEdit() {
     let value
 
     if (field === "labels") {
-      value = target.value.split(',').map(label => label.trim())
+      value = target.value.split('').map(label => label.trim())
     } else if (target.type === 'number') {
       value = +target.value || ''
     } else {
@@ -56,7 +56,7 @@ export function BugEdit() {
       })
   }
 
-  if (!bugToEdit) return <div>Loading...</div>
+  if (!bugToEdit) return  <img src="assets/img/svg/loading.svg" alt="Loading..." className="loading-spinner"/>
 
   const { title = '', description = '', severity = 0, labels = [] } = bugToEdit
   //* now they will never be undeifind
@@ -102,9 +102,10 @@ export function BugEdit() {
           id="labels"
         />
 
-        <button>{bugToEdit._id ? 'Save' : 'Add'}</button>
+        <button>{bugToEdit._id ? 'edit' : 'Add'}</button>
       </form>
       <Link to="/bug">Back to List</Link>
+      {/* <Link to="/bug/edit">bug</Link> */}
       {/* <Link to={!bugId ? "/bug" : `/bug/${bugId}`} className='cancel-link'>Cancel</Link> */}
     </section>
   )
