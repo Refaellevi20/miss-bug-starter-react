@@ -10,7 +10,7 @@ import cookieParser from 'cookie-parser'
 
 
 const app = express()
-const PORT = 3020
+const PORT = process.env.PORT || 3020
 
 app.use(express.static("public"))
 app.use(cookieParser())
