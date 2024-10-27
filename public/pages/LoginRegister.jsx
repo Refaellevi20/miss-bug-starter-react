@@ -2,7 +2,6 @@
 // import { FaUser, FaLock,FaEnvelope  } from "react-icons/fa"; 
 // import './assets/style/cmp/LoginRegister.css';
 // import './LoginRegister.css';
-
 import { LoginSignup } from "./LoginSignup.jsx"
 
 // import '../assets/styles/LoginRegister.css';
